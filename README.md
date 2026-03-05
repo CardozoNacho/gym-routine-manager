@@ -1,9 +1,11 @@
 # Gym Routine Manager – Full Stack Web Application
 
-**Autor:** Cardozo Peragallo Carlos Ignacio
+![FastAPI](https://img.shields.io/badge/FastAPI-Backend-green)
+![React](https://img.shields.io/badge/React-Frontend-blue)
+![PostgreSQL](https://img.shields.io/badge/PostgreSQL-Database-blue)
+![Docker](https://img.shields.io/badge/Docker-Containerized-blue)
 
-Full-stack application built with FastAPI, React and PostgreSQL for managing workout routines and exercises. 
-Includes REST API, modern frontend and Docker-based deployment.
+**Autor:** Cardozo Peragallo Carlos Ignacio
 
 ## 🏗️ Arquitectura del Proyecto
 
