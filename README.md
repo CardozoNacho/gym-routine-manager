@@ -1,8 +1,9 @@
-# Sistema de Gestión de Rutinas de Gimnasio
+# Gym Routine Manager – Full Stack Web Application
 
 **Autor:** Cardozo Peragallo Carlos Ignacio
 
-Una aplicación web full-stack para la gestión de rutinas de entrenamiento en gimnaario. Permite crear, visualizar, modificar y eliminar rutinas de forma intuitiva con una interfaz moderna.
+Full-stack application built with FastAPI, React and PostgreSQL for managing workout routines and exercises. 
+Includes REST API, modern frontend and Docker-based deployment.
 
 ## 🏗️ Arquitectura del Proyecto
 
