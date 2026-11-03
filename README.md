@@ -1,44 +1,46 @@
-# Gym Routine Manager | FastAPI, React y PostgreSQL
+# Gym Routine Manager | FastAPI, React and PostgreSQL
 
-Proyecto académico individual de Carlos Ignacio Cardozo Peragallo. Aplicación Full Stack para crear, buscar, consultar, editar y eliminar rutinas con ejercicios anidados.
+[Español](README.es.md)
 
-## Implementación
+An individual academic project by Carlos Ignacio Cardozo Peragallo. A full-stack application to create, search, view, edit and delete routines with nested exercises.
 
-FastAPI 0.115.6, SQLModel 0.0.22, Uvicorn 0.32.1, PostgreSQL, React 19, React Router 7 y Vite 7. El frontend usa Context API y Fetch. Hay validaciones de nombres, días y valores numéricos. Los ejercicios se administran dentro de las rutinas; no existe un router independiente de ejercicios.
+## Implementation
 
-## Inicio local
+FastAPI 0.115.6, SQLModel 0.0.22, Uvicorn 0.32.1, PostgreSQL, React 19, React Router 7 and Vite 7. The frontend uses Context API and Fetch. Validation covers names, days and numeric values. Exercises are managed inside routines; there is no independent exercise router.
 
-Requiere Python 3.10+, PostgreSQL y Node compatible con el lockfile: `^20.19.0 || >=22.12.0`.
+## Local setup
+
+Requires Python 3.10+, PostgreSQL and a Node version compatible with the lockfile: `^20.19.0 || >=22.12.0`.
 
 ```bash
 git clone https://github.com/CardozoNacho/gym-routine-manager.git
 cd gym-routine-manager
 ```
 
-1. Crear la base `rutinas_gym_db` y `backend/.env` con `DATABASE_URL=postgresql://<usuario>:<clave>@localhost:5432/rutinas_gym_db`.
-2. Desde `backend`, crear/activar un entorno virtual, instalar `pip install -r requirements.txt` y ejecutar `uvicorn main:app --reload --port 8000`.
-3. Crear `frontend/.env` con `VITE_API_URL=http://localhost:8000`, sin barra final.
-4. Desde `frontend`, ejecutar `npm ci` y `npm run dev`.
+1. Create the `rutinas_gym_db` database and a `backend/.env` file containing `DATABASE_URL=postgresql://<user>:<password>@localhost:5432/rutinas_gym_db`.
+2. In `backend`, create and activate a virtual environment, install dependencies with `pip install -r requirements.txt`, then run `uvicorn main:app --reload --port 8000`.
+3. Create `frontend/.env` containing `VITE_API_URL=http://localhost:8000`, without a trailing slash.
+4. In `frontend`, run `npm ci` followed by `npm run dev`.
 
-Frontend: `http://localhost:5173`. Swagger UI: `http://localhost:8000/docs`. Las tablas se crean al iniciar; la base debe existir.
+Frontend: `http://localhost:5173`. Swagger UI: `http://localhost:8000/docs`. Tables are created at startup; the database must already exist.
 
 ## API
 
-| Método | Ruta | Operación |
+| Method | Path | Operation |
 |---|---|---|
-| GET | `/api/rutinas` | Listar |
-| GET | `/api/rutinas/buscar?nombre=...` | Buscar por nombre |
-| GET | `/api/rutinas/{id}` | Detalle |
-| POST | `/api/rutinas` | Crear con ejercicios |
-| PUT | `/api/rutinas/{id}` | Actualizar; reemplazar ejercicios si se envían |
-| DELETE | `/api/rutinas/{id}` | Eliminar con ejercicios |
+| GET | `/api/rutinas` | List routines |
+| GET | `/api/rutinas/buscar?nombre=...` | Search by name |
+| GET | `/api/rutinas/{id}` | Get details |
+| POST | `/api/rutinas` | Create with exercises |
+| PUT | `/api/rutinas/{id}` | Update; replace exercises when supplied |
+| DELETE | `/api/rutinas/{id}` | Delete with exercises |
 
-## Docker y límites pendientes
+## Docker and current limitations
 
-Se incluyen Dockerfiles y Compose con PostgreSQL 15, pero el frontend usa Node 18, incompatible con Vite 7. Actualizar esa imagen y probar el flujo antes de presentar `docker compose up --build` como inicio reproducible.
+Dockerfiles and Compose with PostgreSQL 15 are included, but the frontend image uses Node 18, which is incompatible with Vite 7. Update the image and test the flow before treating `docker compose up --build` as a reproducible starting point.
 
-La URL predeterminada en `frontend/src/config.js` termina en `/` y el contexto concatena `/api/...`: sin configuración explícita puede generar `//api/...`. El `.env` anterior evita ese caso local.
+The default URL in `frontend/src/config.js` ends in `/`, while the context appends `/api/...`. Without an explicit setting, requests may contain `//api/...`. The `.env` setting above avoids this locally.
 
-`init-db.sql` solo contiene comentarios; no carga datos de ejemplo. No hay autenticación, paginación ni suite automatizada de pruebas. La revisión fue estática; no se afirma ejecución integral ni preparación para producción.
+`init-db.sql` contains comments only; it does not seed sample data. There is no authentication, pagination or automated test suite. Source code was reviewed statically; end-to-end execution and production readiness are not claimed.
 
-[Backend](backend/README.md) | [Frontend](frontend/README.md)
+[Backend guide — Spanish](backend/README.md) | [Frontend guide — Spanish](frontend/README.md)
